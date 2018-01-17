@@ -10,8 +10,10 @@ typedef signed   short    s16int;
 typedef unsigned char     u8int;
 typedef signed   char     s8int;
 
+#ifndef __cplusplus
 /* BOOL */
 typedef u8int             bool;
+#endif
 
 #define true 1
 #define True true

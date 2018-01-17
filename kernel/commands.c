@@ -3,6 +3,7 @@
 #include "../drives/keyboard.h"
 #include "string.h"
 #include "kernel.h"
+#include "Foo.h"
 
 void cmd_init(void)
 {
@@ -15,6 +16,7 @@ void cmd_init(void)
     cmd_add("keystats", cmd__keystats);
     cmd_add("chars", cmd__chars);
     cmd_add("cmds", cmd__cmds);
+    cmd_add("foo", cmd__foo);
 }
 
 u16int cmd_add(const char* str, u32int (*callback)(u16int args, const char* argv[]))
@@ -97,7 +99,7 @@ u32int cmd__help(u16int args, const char* argv[])
     printf("             oraz znak w ASCII. Aby wyjsc nalezy nacisnac ^C (Ctrl + C) \n");
     printf(" * chars     Generaruje liste dostepnych znakow \n");
     printf(" * cmds      Wyswietla liste polecen wraz z adresami funkcjow \n");
-    
+    printf(" * foo       Wyswietla wiadomosc powitalna z C++ \n");
 
     return 0;
 }
@@ -251,4 +253,8 @@ u32int cmd__cmds(u16int args, const char* argv[])
 	printf("+--------+-----------------------+----------------+\n");
 
     return 0;
+}
+
+u32int cmd__foo(u16int args, const char* argv[]) {
+    foo();
 }

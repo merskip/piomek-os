@@ -26,4 +26,6 @@ u32int cmd__keytest(u16int args, const char* argv[]);
 u32int cmd__keystats(u16int args, const char* argv[]);
 u32int cmd__chars(u16int args, const char* argv[]);
 u32int cmd__cmds(u16int args, const char* argv[]);
+u32int cmd__foo(u16int args, const char* argv[]);
+
 #endif
