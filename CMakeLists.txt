@@ -3,13 +3,14 @@ project(PiomekOS)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-set(CMAKE_C_FLAGS "-g -nostdlib")
-set(CMAKE_C_LINK_FLAGS "-g -n -T linker.ld -nostdlib")
+set(CMAKE_C_FLAGS "-g -m32 -nostdlib")
+set(CMAKE_C_LINK_FLAGS "-g -m32 -n -T linker.ld -nostdlib")
+set(CMAKE_ASM_NASM_OBJECT_FORMAT "elf32")
 
-enable_language(ASM-ATT)
+enable_language(ASM_NASM)
 
 add_executable(kernel.bin
-        start.s
+        start.asm
         main.c
         drives/keyboard.c
         drives/video.c

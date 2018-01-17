@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Attach Qemu Debugger" type="CLion_Remote" factoryName="GDB Remote Debug" remoteCommand="localhost:1234" symbolFile="" sysroot="">
+  <configuration default="false" name="Attach Qemu Debugger" type="CLion_Remote" factoryName="GDB Remote Debug" activateToolWindowBeforeRun="false" remoteCommand="localhost:1234" symbolFile="$PROJECT_DIR$/cmake-build-debug/kernel.bin" sysroot="">
     <method />
   </configuration>
 </component>

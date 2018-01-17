@@ -9,7 +9,7 @@ extern do_irq1
 	
 SECTION .text
 align 4
-	
+
 __multibot__:
 	dd 	0x1BADB002			; Magic number
 	dd 	0x0	

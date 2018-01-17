@@ -1,4 +1,4 @@
-ENTRY("start")
+ENTRY("__start__")
 
 SECTIONS {
     . = 0x00100000;
