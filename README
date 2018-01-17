@@ -1,7 +1,0 @@
-Thanks for Łukasz Sowa; Przemub, Kj, Jarosław Pelczar from Wikibooks
-
-# Compilation & run on Qemu
-
- * make (?)
- * sudo apt install qemu-system-x86
- * qemu-system-i386 -drive format=raw,file=PiomekOS.iso
