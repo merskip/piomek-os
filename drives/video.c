@@ -1,4 +1,5 @@
 #include "video.h"
+#include "../kernel/io.h"
 
 void video_init()
 {

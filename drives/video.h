@@ -66,7 +66,7 @@ void video_put_null(void);
 
 void video_set_color(unsigned short int color);
 void video_set_color_char(unsigned short int color, int position);
-inline void color_reset();
+void color_reset();
 
 void video_scroll();
 

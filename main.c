@@ -4,30 +4,27 @@
 #include "drives/video.h"
 #include "drives/keyboard.h"
 #include "kernel/string.h"
+#include "kernel/commands.h"
 
 char name_os[] = "PiomekOS";
 
-u32int function_test(u16int args, const char* argv[])
-{
+u32int function_test(u16int args, const char *argv[]) {
     int i = 0;
     printf("TEST with %i args\n", args);
 
-    for (i = 0; i < args; i++)
-    {
-	printf("argv[%i] = %s \n", i, argv[i]);
+    for (i = 0; i < args; i++) {
+        printf("argv[%i] = %s \n", i, argv[i]);
     }
 
     return 0;
 }
 
-u32int function_colors(u16int args, const char* argv[])
-{
+u32int function_colors(u16int args, const char *argv[]) {
     color_test();
     return 0;
 }
 
-int start_kernel(unsigned int magic, void* flags)
-{
+int start_kernel(unsigned int magic, void *flags) {
     int i = 0;
 
     video_init();
@@ -46,36 +43,27 @@ int start_kernel(unsigned int magic, void* flags)
     printf("\n\n\n");
 
     printf("Multiboot checksum: ");
-    if (magic == 0x2BADB002)
-    {
-	print_right_color("[ OK ]", COLOR_LIGHT_GREEN | BG_COLOR_BLACK);
-    }
-    else
-    {
-	print_right_color("[FAIL]", COLOR_RED | BG_COLOR_BLACK);	      
-	goto END_KERNEL;
+    if (magic == 0x2BADB002) {
+        print_right_color("[ OK ]", COLOR_LIGHT_GREEN | BG_COLOR_BLACK);
+    } else {
+        print_right_color("[FAIL]", COLOR_RED | BG_COLOR_BLACK);
+        goto END_KERNEL;
     }
 
     printf("Primitives size: ");
-    if (__primitives_test__() == 0)
-    {
-	print_right_color("[ OK ]", COLOR_LIGHT_GREEN | BG_COLOR_BLACK);
+    if (__primitives_test__() == 0) {
+        print_right_color("[ OK ]", COLOR_LIGHT_GREEN | BG_COLOR_BLACK);
+    } else {
+        print_right_color("[FAIL]", COLOR_RED | BG_COLOR_BLACK);
+        goto END_KERNEL;
     }
-    else
-    {
-	print_right_color("[FAIL]", COLOR_RED | BG_COLOR_BLACK);	      
-	goto END_KERNEL;
-    }
-   
+
     printf("Keyboard test: ");
-    if (keyboard_self_test())
-    {
-	print_right_color("[ OK ]", COLOR_LIGHT_GREEN | BG_COLOR_BLACK);
-    }
-    else
-    {
-	print_right_color("[FAIL]", COLOR_RED | BG_COLOR_BLACK);
-	goto END_KERNEL;
+    if (keyboard_self_test()) {
+        print_right_color("[ OK ]", COLOR_LIGHT_GREEN | BG_COLOR_BLACK);
+    } else {
+        print_right_color("[FAIL]", COLOR_RED | BG_COLOR_BLACK);
+        goto END_KERNEL;
     }
 
     printf("Keyboard set LEDs on (1, 0, 0)\n");
@@ -83,7 +71,7 @@ int start_kernel(unsigned int magic, void* flags)
     keyboard_leds.caps = false;
     keyboard_leds.scroll = false;
     keyboard_set_leds();
-    
+
     printf("\nType 'help' to get a list of commands.\n");
 
     cmd_init();
@@ -92,7 +80,7 @@ int start_kernel(unsigned int magic, void* flags)
 
     run_terminal();
 
-END_KERNEL:
+    END_KERNEL:
     __full_sleep_cpu__();
 
     return 0;

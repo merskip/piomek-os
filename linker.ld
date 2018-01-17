@@ -1,5 +1,4 @@
-/* DON'T USE 'OUTPUT_FORMAT("binary")' !! */
-ENTRY("__start__") 
+ENTRY("start")
 
 SECTIONS {
     . = 0x00100000;

@@ -2,6 +2,7 @@
 #include "../drives/video.h"
 #include "../drives/keyboard.h"
 #include "string.h"
+#include "kernel.h"
 
 void cmd_init(void)
 {
@@ -101,6 +102,9 @@ u32int cmd__help(u16int args, const char* argv[])
     return 0;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
+#pragma ide diagnostic ignored "OCDFAInspection"
 u32int cmd__shutdown(u16int args, const char* argv[])
 {
     video_cls();
@@ -122,6 +126,7 @@ u32int cmd__shutdown(u16int args, const char* argv[])
 
     return 1;
 }
+#pragma clang diagnostic pop
 
 u32int cmd__reboot(u16int args, const char* argv[])
 {
@@ -210,7 +215,7 @@ u32int cmd__chars(u16int args, const char* argv[])
 		break;
 		
 	    if (key == 0x01)
-		return;
+		    return 0;
 	}
 	j = 0;
     }
@@ -238,7 +243,7 @@ u32int cmd__cmds(u16int args, const char* argv[])
 	        printf(" ");
 
 	    printf("| %X", cmd_s[i].callback);
-	    for (j = __int_char_lenght__((int) cmd_s[i].callback, &mod, 16)-2; j <= 9; j++)
+	    for (j = (u16int) (__int_char_lenght__((int) cmd_s[i].callback, &mod, 16) - 2); j <= 9; j++)
 	        printf(" ");
 
 	    printf(" |\n");

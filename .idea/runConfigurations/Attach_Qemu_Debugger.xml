@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Attach Qemu Debugger" type="CLion_Remote" factoryName="GDB Remote Debug" remoteCommand="localhost:1234" symbolFile="" sysroot="">
+    <method />
+  </configuration>
+</component>
