@@ -12,7 +12,9 @@ enable_language(ASM_NASM)
 
 add_executable(kernel.bin
         multiboot.asm
-        start.asm
+        kernel.asm
+        gdt.asm
+        idt.asm
         main.c
         drives/keyboard.c
         drives/video.c

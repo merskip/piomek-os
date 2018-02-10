@@ -24,7 +24,7 @@ u32int function_colors(u16int args, const char *argv[]) {
     return 0;
 }
 
-int start_kernel(unsigned int magic, void *flags) {
+int start_kernel(unsigned int magic) {
     int i = 0;
 
     video_init();
