@@ -1,6 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build PiomekOS.iso" type="CMakeRunConfiguration" factoryName="Application" activateToolWindowBeforeRun="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PiomekOS" TARGET_NAME="kernel.bin" CONFIG_NAME="Debug">
-    <envs />
-    <method />
-  </configuration>
-</component>
