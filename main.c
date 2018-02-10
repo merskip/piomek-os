@@ -43,7 +43,7 @@ int start_kernel(unsigned int magic, void *flags) {
     printf("\n\n\n");
 
     printf("Multiboot checksum: ");
-    if (magic == 0x2BADB002) {
+    if (magic == 0x36d76289) {
         print_right_color("[ OK ]", COLOR_LIGHT_GREEN | BG_COLOR_BLACK);
     } else {
         print_right_color("[FAIL]", COLOR_RED | BG_COLOR_BLACK);

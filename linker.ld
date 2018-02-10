@@ -1,10 +1,20 @@
 ENTRY("__start__")
 
 SECTIONS {
-    . = 0x00100000;
+
+    /* Start layout of output file from 1 MiB /*
+    . = 1M; /* */
+
+    .multiboot_header : {
+    }
 
     .text : {
         *(.text)
+    }
+
+    /* The GNU notes information must be after multiboot header, because Grub may not found header */
+    .note.gnu.build-id : {
+        *(.note.gnu.build-id)
     }
 
     .rodata ALIGN (0x1000) : {

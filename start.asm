@@ -1,3 +1,9 @@
+;
+; start.asm
+;
+; Created by Piotr Merski on 10.02.2018
+;
+
 global __start__
 global idt
 global gdt
@@ -6,14 +12,8 @@ global irq1
 	
 extern start_kernel
 extern do_irq1
-	
-SECTION .text
-align 4
 
-__multibot__:
-	dd 	0x1BADB002			; Magic number
-	dd 	0x0	
-	dd 	-(0x1BADB002 + 0x0)
+section .text
 
 __start__:
 	cli					; Disabling interrupts
