@@ -23,11 +23,14 @@ add_executable(kernel.bin
         kernel/string.c
         kernel/Foo.cpp)
 
-add_custom_command(TARGET kernel.bin
-        POST_BUILD
-        COMMAND cp kernel.bin isofiles/boot/ && grub-mkrescue -o PiomekOS.iso isofiles
-        COMMENT "Creating PiomekOS.iso"
-        )
+add_custom_target(PiomekOS.iso
+        COMMAND grub-mkrescue -o PiomekOS.iso isofiles
+        DEPENDS kernel.bin)
+
+add_custom_command(TARGET PiomekOS.iso
+        PRE_BUILD
+        COMMAND cp kernel.bin isofiles/boot/
+        MAIN_DEPENDENCY kernel.bin)
 
 configure_file(linker.ld linker.ld)
 file(COPY isofiles DESTINATION .)
