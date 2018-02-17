@@ -1,5 +1,4 @@
-#ifndef __H_PRIMITIVES__
-#define __H_PRIMITIVES__
+#pragma once
 
 typedef unsigned int      u32int;
 typedef signed   int      s32int;
@@ -23,4 +22,4 @@ typedef u8int             bool;
 #define False false
 #define FALSE False
 
-#endif
+typedef __SIZE_TYPE__ size_t;

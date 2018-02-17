@@ -5,6 +5,7 @@
 #include "drives/keyboard.h"
 #include "kernel/string.h"
 #include "kernel/commands.h"
+#include "src/gdt.h"
 
 char name_os[] = "PiomekOS";
 
@@ -25,7 +26,8 @@ u32int function_colors(u16int args, const char *argv[]) {
 }
 
 int start_kernel(unsigned int magic) {
-    int i = 0;
+
+    gdt_init_default();
 
     video_init();
     video_cls();
