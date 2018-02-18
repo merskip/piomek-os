@@ -5,7 +5,7 @@
 #include "drives/keyboard.h"
 #include "kernel/string.h"
 #include "kernel/commands.h"
-#include "src/gdt.h"
+#include "src/arch/x86/gdt.h"
 
 char name_os[] = "PiomekOS";
 

@@ -5,7 +5,7 @@
 //
 
 #pragma once
-#include"../kernel/primitives.h"
+#include"../../../kernel/primitives.h"
 
 #define GDT_WHOLE_32_BIT_MEMORY_SPACE 0x0, 0xFFFFFFFF
 

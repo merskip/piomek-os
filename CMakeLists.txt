@@ -14,7 +14,6 @@ enable_language(ASM_NASM)
 add_executable(kernel.bin
         multiboot.asm
         kernel.asm
-        idt.asm
         main.c
         drives/keyboard.c
         drives/video.c
@@ -25,8 +24,8 @@ add_executable(kernel.bin
         kernel/kernel.c
         kernel/string.c
         kernel/Foo.cpp
-        src/gdt.c
-        src/gdt.asm)
+        src/arch/x86/gdt.c
+        src/arch/x86/gdt.asm)
 
 add_custom_target(${PROJECT_NAME}.iso
         COMMAND cp kernel.bin isofiles/boot/

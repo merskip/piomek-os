@@ -13,17 +13,17 @@
  
 void set_intr_gate(int n, void* addr) 
 { 
-    _set_gate(&idt[n], 14, 0, addr); 
+//    _set_gate(&idt[n], 14, 0, addr);
 } 
  
 void set_trap_gate(int n, void* addr) 
 { 
-    _set_gate(&idt[n], 15, 0, addr); 
+//    _set_gate(&idt[n], 15, 0, addr);
 } 
  
 void set_system_gate(int n, void* addr) 
 { 
-    _set_gate(&idt[n], 15, 3, addr); 
+//    _set_gate(&idt[n], 15, 3, addr);
 }
 
 static unsigned int cached_irq_mask = 0xffff; 
