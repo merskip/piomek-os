@@ -6,6 +6,7 @@
 #include "kernel/string.h"
 #include "kernel/commands.h"
 #include "src/arch/x86/gdt.h"
+#include "src/arch/x86/idt.h"
 
 char name_os[] = "PiomekOS";
 
@@ -28,6 +29,8 @@ u32int function_colors(u16int args, const char *argv[]) {
 int start_kernel(unsigned int magic) {
 
     gdt_init_default();
+    idt_init_default();
+    idt_enable_interrupts();
 
     video_init();
     video_cls();

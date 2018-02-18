@@ -33,7 +33,7 @@ void gdt_init_default() {
     gdt_fill_entry(&gdt_default_entries[4],
                    GDT_WHOLE_32_BIT_MEMORY_SPACE, 0xF2, 0x0C);
 
-    gdt_load_and_flush(gdt_default_entries, sizeof(gdt_default_entries));
+    gdt_load_and_flush(gdt_default_entries, 5);
 }
 
 void gdt_fill_entry(struct gdt_entry *entry, u32int base, u32int limit, u8int access, u8int granularity) {
@@ -49,10 +49,10 @@ void gdt_fill_entry(struct gdt_entry *entry, u32int base, u32int limit, u8int ac
     };
 }
 
-void gdt_flush(void *gdt_desc);
+void gdt_flush(struct gdt_descriptor *gdt_desc);
 
 void gdt_load_and_flush(struct gdt_entry *entities, size_t size) {
-    gdt_shared_descriptor.base = (u32int)entities;
-    gdt_shared_descriptor.limit = (u16int) (size - 1);
+    gdt_shared_descriptor.base = (u32int) entities;
+    gdt_shared_descriptor.limit = (u16int) (sizeof(struct gdt_entry) * size - 1);
     gdt_flush(&gdt_shared_descriptor);
 }

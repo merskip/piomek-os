@@ -19,13 +19,17 @@ add_executable(kernel.bin
         drives/video.c
         kernel/commands.c
         kernel/common.c
-        kernel/intr.c
         kernel/io.c
         kernel/kernel.c
         kernel/string.c
         kernel/Foo.cpp
         src/arch/x86/gdt.c
-        src/arch/x86/gdt.asm)
+        src/arch/x86/gdt.asm
+        src/arch/x86/idt.c
+        src/arch/x86/idt.asm
+        src/arch/x86/idt_handlers.c)
+
+set(INCLUDE_DIRECTORIES "src")
 
 add_custom_target(${PROJECT_NAME}.iso
         COMMAND cp kernel.bin isofiles/boot/
