@@ -4,25 +4,20 @@ project(PiomekOS)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(CMAKE_C_FLAGS "-g -m32 -nostdlib")
-set(CMAKE_CXX_FLAGS "-g -m32 -nostdlib")
-set(CMAKE_CXX_LINK_FLAGS "-g -m32 -n -T linker.ld -nostdlib")
+set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
+
+set(CMAKE_C_LINK_FLAGS "-g -m32 -n -T linker.ld -nostdlib")
+set(CMAKE_CXX_LINK_FLAGS ${CMAKE_C_LINK_FLAGS})
+
 set(CMAKE_ASM_NASM_OBJECT_FORMAT "elf32")
 set(CMAKE_ASM_NASM_FLAGS "-g")
 
 enable_language(ASM_NASM)
 
 add_executable(kernel.bin
-        multiboot.asm
-        kernel.asm
-        main.c
-        drives/keyboard.c
-        drives/video.c
-        kernel/commands.c
-        kernel/common.c
-        kernel/io.c
-        kernel/kernel.c
-        kernel/string.c
-        kernel/Foo.cpp
+        src/multiboot.asm
+        src/kernel.asm
+        src/kernel.c
         src/arch/x86/gdt.c
         src/arch/x86/gdt.asm
         src/arch/x86/idt.c
